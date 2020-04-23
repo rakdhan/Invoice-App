@@ -3,7 +3,12 @@ module.exports = (sequelize, DataTypes) => {
   const Sequelize = sequelize.Sequelize
   const Model = Sequelize.Model
 
-  class Customer extends Model { }
+  class Customer extends Model { 
+    get caps(){
+      let a = this.notes
+      return `${a.toUpperCase()}`
+    }
+  }
 
   Customer.init({
     notes: DataTypes.STRING

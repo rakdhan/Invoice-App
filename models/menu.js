@@ -3,7 +3,9 @@ module.exports = (sequelize, DataTypes) => {
   const Sequelize = sequelize.Sequelize
   const Model = Sequelize.Model
 
-  class Menu extends Model { }
+  class Menu extends Model { 
+    
+  }
 
   Menu.init({
     name: {                     //valid

@@ -48,7 +48,9 @@ class MenuController {
         const alert = req.query
         let newData
         // ProductionHouse.findAll()
-        Menu.findAll()
+        Menu.findAll({
+            order: [['id']]
+        })
         .then( temp => {
             newData = temp
             return Menu.findByPk(Number(req.params.id))
@@ -115,6 +117,7 @@ class MenuController {
         })
         .then( dataOrder => {
             res.render('add-order', {data, dataCust, dataOrder, alert})
+            // res.send(data, dataCust, dataOrder, alert)
         })
         .catch( (err) => {
             // res.send(err)

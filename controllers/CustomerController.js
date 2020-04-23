@@ -19,14 +19,44 @@ class CustomerController {
 
     static addPage(req, res){
         // const alert = req.query
-        res.render('add-customer')
+        // res.render('add-customer')
+        let dataMenu = null;
+        let data = null;
+        Menu.findAll()
+        .then(data1 =>{
+            dataMenu = data1
+
+            return Customer.findByPk(
+                Number(req.params.id), 
+                {include: { model: Menu }
+            })
+        })
+        .then( data2 => {
+            data = data2
+
+            return Order.findAll({
+                where: {
+                    CustomerId : req.params.id
+                }
+            })
+        })
+        .then( dataOrder => {
+            res.send(data, dataMenu, dataOrder, alert)
+            // res.render('add-customer', {dataMenu, data, dataOrder})
+        })
+        .catch( (err) => {
+            res.send(err)
+            // res.render('error', {msg : err})
+        })
     }
 
     static postAddPage(req, res){
-       
+        
+        // Order.create({
         Customer.create({
             id: req.body.id,
-            notes: req.body.notes
+            // menu: darimana,
+            notes: req.body.notes,
         })
         .then( () => {
             res.redirect(`/customers`)
