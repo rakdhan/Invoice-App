@@ -46,7 +46,7 @@
                 <% for(let j = 0; j < dataCust.length; j++){ %>
                     <% if(dataCust[j].id == dataOrder[i].CustomerId){ %>
                     <td><%= `${dataCust[j].id}` %></td>
-                    <td><%= `${dataCust[j].caps}` %></td>
+                    <td><%= `${dataCust[j].capss()}` %></td>
                     <% break %>
                     <% } %>
                 <% } %>

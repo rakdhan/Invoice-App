@@ -4,9 +4,10 @@ module.exports = (sequelize, DataTypes) => {
   const Model = Sequelize.Model
 
   class Customer extends Model { 
-    get caps(){
-      let a = this.notes
-      return `${a.toUpperCase()}`
+    capss(){ 
+      console.log('qwewe')
+      // return `${this.notes.toUpperCase()}`
+      return 'AAA'
     }
   }
 
