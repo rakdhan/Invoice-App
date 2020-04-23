@@ -1,0 +1,59 @@
+<%- include('partials/header')%>
+<body>
+
+    <div class="container mt-5">
+        <a href="/"><button type="button" class="btn btn-primary">Home</button></a>
+    </div>
+    <div class="container-fluid p-5">
+        <h1><%= data.name %></h1>
+        <% if(alert.msg){ %>
+            <div class="alert alert-<%= alert.type %>" role="alert">
+                <%= alert.msg %>
+            </div>
+        <% } %>
+    
+        <form action="/menu/addCustomers/<%= data.id %>" method="POST">
+            <h4>Ordered By</h4>
+            <input name="MenuId" value="<%= data.id %>" hidden>
+            <div class="form-group">
+                <label>Customer ID</label>
+                <select name="CustomerId" class="form-control">
+                    <option selected disabled>Input Customer ID</option>
+                    <% for(let i = 0; i < dataCust.length; i++){ %>
+                        <option value="<%= dataCust[i].id %>">
+                            <%= `${dataCust[i].id}` %>
+                        </option>
+                    <% } %>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Check Notes</button>
+            <a href="/menu"><button type="button" class="btn btn-danger">Cancel</button></a>
+        </form> <br>
+
+        <h3>Customer's Extra Little Request</h3>
+
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i = 0; i < dataOrder.length; i++){ %>
+                <tr>
+                <% for(let j = 0; j < dataCust.length; j++){ %>
+                    <% if(dataCust[j].id == dataOrder[i].CustomerId){ %>
+                    <td><%= `${dataCust[j].id}` %></td>
+                    <td><%= `${dataCust[j].notes}` %></td>
+                    <% break %>
+                    <% } %>
+                <% } %>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
