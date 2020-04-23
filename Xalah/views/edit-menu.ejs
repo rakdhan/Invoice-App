@@ -1,0 +1,30 @@
+<%- include('partials/header')%>
+
+<body>
+    
+    <div class="container mt-5">
+        <a href="/"><button type="button" class="btn btn-primary">Home</button></a>
+    </div>
+    <div class="container-fluid p-5">
+        <h1 class="text-center">Edit Movie</h1>
+        <% if(alert.msg){ %>
+          <div class="alert alert-danger" role="alert">
+              <%= alert.msg %>
+          </div>
+        <% } %>
+        <form action="/menu/edit/<%= data.id %>" method="POST">
+            <div class="form-group">
+                <label>Name</label>
+                <input name="name" type="text" class="form-control" placeholder="e.g: Bakmi Ayam MPR" value="<%= data.name %>">
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input name="price" type="text" class="form-control" placeholder="e.g: 2020" value="<%= data.price %>">
+            </div>
+            <button type="submit" class="btn btn-success">Update selected menu</button>
+            <a href="/menu"><button type="button" class="btn btn-danger">Cancel</button></a>
+        </form>
+    </div>
+    
+</body>
+</html>

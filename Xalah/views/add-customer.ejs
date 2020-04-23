@@ -1,0 +1,22 @@
+<%- include('partials/header')%>
+<body>
+    
+    <div class="container mt-5">
+        <a href="/"><button type="button" class="btn btn-primary">Home</button></a>
+    </div>
+    <div class="container-fluid p-5">
+        <h1 class="text-center"> Apply your order(s) </h1>
+        
+        <form action="/customers/add" method="POST">
+            <div class="form-group">
+              <label>Notes</label>
+              <input name="notes" type="text-area" class="form-control" placeholder="e.g: Buat yang enak ya">
+            </div>
+           
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="/customers"><button type="button" class="btn btn-danger">Cancel</button></a>
+        </form>
+    </div>
+
+</body>
+</html>
