@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
     notes: DataTypes.STRING
   }, { sequelize });
 
+  Customer.addHook('beforeCreate', (instance, options) => { //by addHook
+    if(!instance.notes) {instance.notes = '-'}
+  })
+
   Customer.associate = function(models) {
     Customer.belongsToMany(models.Menu, { through: models.Order })
     // associations can be defined here
